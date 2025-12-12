@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ShopApp.API/ShopApp.API.csproj" />
+  <Project Path="ShopApp.BusinessLogic/ShopApp.BusinessLogic.csproj" Id="c5cac5ff-486e-42fd-81a8-fb1ed5e74eab" />
+  <Project Path="ShopApp.DataAccess/ShopApp.DataAccess.csproj" Id="e26ffc0e-a496-494a-b98b-1915148556aa" />
+  <Project Path="ShopApp.Models/ShopApp.Models.csproj" Id="cbe4fc19-4534-404c-ad51-39f8410602ca" />
+</Solution>
