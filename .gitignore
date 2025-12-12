@@ -16,3 +16,5 @@
 /ShopApp.DataAccess/obj
 /ShopApp.Models/bin/Debug/net10.0
 /ShopApp.Models/obj
+/ShopApp.API/appsettings.json
+/ShopApp.API/appsettings.Development.json
