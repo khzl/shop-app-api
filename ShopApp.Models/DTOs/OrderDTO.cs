@@ -7,6 +7,7 @@ namespace ShopApp.Models.DTOs
     public class OrderDTO
     {
         public int CustomerId { get; set; }
-        public decimal Amount { get; set; }
+        public List<OrderItemDTO> OrderItems { get; set; } = new List<OrderItemDTO>();
+
     }
 }

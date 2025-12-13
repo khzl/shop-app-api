@@ -4,7 +4,9 @@ using System.Text;
 
 namespace ShopApp.Models.DTOs
 {
-    internal class CategoryDTO
+    public class CategoryDTO
     {
+        public int CategoryId { get; set; }
+        public List<CategoryDTO> Categories { get; set; } = new List<CategoryDTO>();
     }
 }

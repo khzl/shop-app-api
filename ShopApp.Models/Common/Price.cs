@@ -4,7 +4,17 @@ using System.Text;
 
 namespace ShopApp.Models.Common
 {
-    internal class Price
+    public class Price
     {
+        public decimal Value { get; private set; }
+
+        public Price(decimal value)
+        {
+            if (value < 0)
+            {
+                throw new Exception("Price Cannot Be Negative");
+            }
+            Value = value;
+        }
     }
 }

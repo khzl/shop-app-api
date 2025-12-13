@@ -4,7 +4,10 @@ using System.Text;
 
 namespace ShopApp.Models.DTOs
 {
-    internal class CartDTO
+    public class CartDTO
     {
+        public int CartId { get; set; }
+
+        public List<CartDTO> Cart { get; set; } = new List<CartDTO>();
     }
 }

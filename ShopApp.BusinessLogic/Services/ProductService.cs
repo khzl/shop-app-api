@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShopApp.BusinessLogic.Services
 {
-    internal class ProductService
+    public class ProductService
     {
     }
 }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ShopApp.BusinessLogic.Interfaces
 {
-    internal class IOrderService
+    public interface IOrderService
     {
     }
 }

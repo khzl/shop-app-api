@@ -4,7 +4,8 @@ using System.Text;
 
 namespace ShopApp.DataAccess.Interfaces
 {
-    internal class IUnitOfWork
+    public interface IUnitOfWork
     {
+
     }
 }

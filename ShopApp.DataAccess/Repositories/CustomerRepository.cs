@@ -1,10 +1,12 @@
-﻿using System;
+﻿using ShopApp.DataAccess.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace ShopApp.DataAccess.Repositories
 {
-    internal class CustomerRepository
+    public class CustomerRepository : ICustomerRepository
     {
+
     }
 }

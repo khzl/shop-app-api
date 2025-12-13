@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopApp.Models.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -9,7 +10,7 @@ namespace ShopApp.Models.Model
         public int ProductId { get; set; }
         public string? Name { get; set; }
         public string? Description { get; set; }
-        public decimal Price { get; set; }
+        public Price Price { get; set; } = new Price(0);
 
         // FK (Many-To-One)
         public int CategoryId { get; set; }
