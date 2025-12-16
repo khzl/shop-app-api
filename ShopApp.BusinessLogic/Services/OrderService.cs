@@ -20,6 +20,16 @@ namespace ShopApp.BusinessLogic.Services
 
         public int AddOrder(OrderDTO orderDTO)
         {
+            // validate all order items 
+            foreach(var orderItem in orderDTO.OrderItems)
+            {
+                if (!orderItem.UnitPrice.HasValue)
+                {
+                    throw new ArgumentException($"UnitPrice Is Required For ProductId:  {orderItem.ProductId}",
+                        nameof(orderDTO.OrderItems));
+                }
+            }
+
             var order = new Orders
             {
                 CustomerId = orderDTO.CustomerId,
@@ -28,7 +38,7 @@ namespace ShopApp.BusinessLogic.Services
                 {
                     ProductId = orderItem.ProductId,
                     Quantity = orderItem.Quantity,
-                    UnitPrice = new Price(orderItem.UnitPrice)
+                    UnitPrice = new Price(orderItem.UnitPrice!.Value) // use .value safely
                 }).ToList()
             };
             return _unitOfWork.Orders.Add(order);
