@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using ShopApp.DataAccess.Data;
 using ShopApp.DataAccess.Interfaces;
 using ShopApp.Models.Model;
 
@@ -9,9 +10,9 @@ namespace ShopApp.DataAccess.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly AppDbContext _Db;
+        private readonly ShopDbContext _Db;
 
-        public OrderRepository(AppDbContext Db)
+        public OrderRepository(ShopDbContext Db)
         {
             _Db = Db;
         }

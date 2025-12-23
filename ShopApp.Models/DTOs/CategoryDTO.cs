@@ -7,6 +7,10 @@ namespace ShopApp.Models.DTOs
     public class CategoryDTO
     {
         public int CategoryId { get; set; }
-        public List<CategoryDTO> Categories { get; set; } = new List<CategoryDTO>();
+        public string? CategoryName { get; set; }
+        public string? CategoryDescription { get; set; }
+        public string? PictureUrl { get; set; }
+
+        public List<ProductDTO> Products { get; set; } = new List<ProductDTO>();
     }
 }

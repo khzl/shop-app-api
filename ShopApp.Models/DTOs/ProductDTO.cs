@@ -8,8 +8,9 @@ namespace ShopApp.Models.DTOs
     {
         public int ProductId { get; set; }
         public string? ProductName { get; set; }
-        public decimal? Price { get; set; } = 0;
-
-        public List<ProductDTO> Products { get; set; } = new List<ProductDTO>();
+        public string? ProductDescription { get; set; }
+        public decimal? Price { get; set; }
+        public int CategoryId { get; set; }
+        public string? CategoryName { get; set; }
     }
 }

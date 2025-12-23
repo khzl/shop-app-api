@@ -10,6 +10,6 @@ namespace ShopApp.Models.DTOs
         public string? CustomerName { get; set; }
         public string? Email { get; set; }
 
-        public List<CustomerDTO> Customer { get; set; } = new List<CustomerDTO>();
+        public List<OrderDTO> Orders { get; set; } = new List<OrderDTO>();
     }
 }

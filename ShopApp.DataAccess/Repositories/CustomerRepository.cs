@@ -3,13 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ShopApp.Models.Model;
+using ShopApp.DataAccess.Data;
+using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace ShopApp.DataAccess.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly AppDbContext _Db;
-        public CustomerRepository(AppDbContext Db)
+        private readonly ShopDbContext _Db;
+        public CustomerRepository(ShopDbContext Db)
         {
             _Db = Db;
         }
@@ -18,7 +21,7 @@ namespace ShopApp.DataAccess.Repositories
         {
             _Db.Customers.Add(customers);
             _Db.SaveChanges();
-            return customers.Id;
+            return customers.CustomerId;
         }
 
         public void Delete(int Id)
@@ -33,7 +36,10 @@ namespace ShopApp.DataAccess.Repositories
 
         public List<Customers> GetAll()
         {
-            return _Db.Customers.ToList();
+            return _Db.Customers
+                .Include(customer => customer.Orders)
+                .Include(customer => customer.Cart)
+                .ToList();
         }
 
         public Customers? GetById(int Id)

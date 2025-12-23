@@ -22,4 +22,8 @@
     <ProjectReference Include="..\ShopApp.Models\ShopApp.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
 </Project>

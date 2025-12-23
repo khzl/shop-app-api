@@ -2,15 +2,15 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 using Microsoft.EntityFrameworkCore;
-using ShopApp.DataAccess;
 using ShopApp.DataAccess.Repositories;
 using ShopApp.DataAccess.Interfaces;
 using ShopApp.BusinessLogic.Services;
+using ShopApp.DataAccess.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // DB Connection 
-builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<ShopDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Register UnitOfWork + Repositories

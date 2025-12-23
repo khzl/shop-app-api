@@ -6,7 +6,7 @@ namespace ShopApp.Models.Model
 {
     public class Payments
     {
-        public int Id { get; set; }
+        public int PaymentId { get; set; }
         public string? TypePayment { get; set; }
         public decimal Amount { get; set; }
 

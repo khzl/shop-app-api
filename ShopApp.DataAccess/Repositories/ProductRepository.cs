@@ -3,14 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using ShopApp.Models.Model;
+using ShopApp.DataAccess.Data;
 
 namespace ShopApp.DataAccess.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly AppDbContext _Db;
+        private readonly ShopDbContext _Db;
 
-        public ProductRepository(AppDbContext Db)
+        public ProductRepository(ShopDbContext Db)
         {
             _Db = Db;
         }

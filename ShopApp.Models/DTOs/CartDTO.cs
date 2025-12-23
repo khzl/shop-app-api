@@ -8,6 +8,7 @@ namespace ShopApp.Models.DTOs
     {
         public int CartId { get; set; }
 
-        public List<CartDTO> Cart { get; set; } = new List<CartDTO>();
+        public int CustomerId { get; set; }
+        public List<CartItemDTO> CartItems { get; set; } = new List<CartItemDTO>();
     }
 }
