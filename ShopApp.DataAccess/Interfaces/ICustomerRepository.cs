@@ -7,12 +7,15 @@ namespace ShopApp.DataAccess.Interfaces
 {
     public interface ICustomerRepository
     {
-        // signture for method
-        Customers? GetById(int Id);
-        List<Customers> GetAll();
-        int Add(Customers customers);
-        void Update(Customers customers);
-        void Delete(int id);
+        // signature for method
+
+        public int Add(Customers Customer);
+        public void Delete(int CustomerId);
+        public List<Customers> GetAll();
+        public Customers? GetById(int CustomerId);
+        public Customers? GetByEmail(string Email);
+        public void Update(Customers Customer);
+        public bool CustomerExists(int CustomerId);
 
     }
 }

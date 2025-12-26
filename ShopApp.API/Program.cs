@@ -9,7 +9,7 @@ using ShopApp.DataAccess.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// DB Connection 
+// DB Connection - Add DbContext
 builder.Services.AddDbContext<ShopDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -17,6 +17,10 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<ICartRepository, CartRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IPaymentRepository, PaymentRepository>();
+// Register UnitOfWork As Scoped
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 // Register Services 
@@ -26,7 +30,9 @@ builder.Services.AddScoped<CustomerService>();
 
 
 // Add Controller And EndPoint And Swagger Generation
+// Add Controllers 
 builder.Services.AddControllers();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -39,6 +45,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
 // Map Controller 
 app.MapControllers();
 app.Run();

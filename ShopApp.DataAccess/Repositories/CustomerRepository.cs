@@ -24,9 +24,9 @@ namespace ShopApp.DataAccess.Repositories
             return customers.CustomerId;
         }
 
-        public void Delete(int Id)
+        public void Delete(int CustomerId)
         {
-            var customer = _Db.Customers.Find(Id);
+            var customer = _Db.Customers.Find(CustomerId);
             if (customer != null)
             {
                 _Db.Customers.Remove(customer);
@@ -42,15 +42,46 @@ namespace ShopApp.DataAccess.Repositories
                 .ToList();
         }
 
-        public Customers? GetById(int Id)
+        public Customers? GetById(int CustomerId)
         {
-            return _Db.Customers.Find(Id);
+            try
+            {
+                return _Db.Customers
+                    .AsSplitQuery()
+                    .Include(customer => customer.Orders)
+                    .ThenInclude(order => order.OrderItems)
+                    .Include(customer => customer.Cart)
+                    .ThenInclude(cart => cart != null ? cart.ProductCarts : Enumerable.Empty<ProductCarts>())
+                    .ThenInclude(productCart => productCart != null ? productCart.Products : null)
+                    .FirstOrDefault(customer => customer.CustomerId == CustomerId);
+            }
+            catch (Exception ex)
+            {
+                // log the error 
+                Console.WriteLine($"Error Getting Customer By ID : {ex.Message}");
+                return null;
+            }
         }
 
-        public void Update(Customers customers)
+        public Customers? GetByEmail(string Email)
         {
-            _Db.Customers.Update(customers);
-            _Db.SaveChanges();
+            return _Db.Customers
+                .FirstOrDefault(customer => customer.Email == Email);
+        }
+
+        public void Update(Customers Customer)
+        {
+            var ExistingCustomer = _Db.Customers.Find(Customer.CustomerId);
+            if(ExistingCustomer != null)
+            {
+                _Db.Entry(ExistingCustomer).CurrentValues.SetValues(Customer);
+                _Db.SaveChanges();
+            }
+        }
+
+        public bool CustomerExists(int CustomerId)
+        {
+            return _Db.Customers.Any(customer => customer.CustomerId == CustomerId);
         }
 
     }

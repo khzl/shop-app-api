@@ -7,11 +7,14 @@ namespace ShopApp.DataAccess.Interfaces
 {
     public interface IProductRepository
     {
-        // Signture for Method 
-        Products? GetById(int Id);
-        List<Products> GetAll();
-        int Add(Products products);
-        void Update(Products products);
-        void Delete(int Id);
+        // Signature for Method 
+        public int Add(Products Product);
+        public void Delete(int ProductId);
+        public List<Products> GetAll();
+        public List<Products> GetByCategory(int CategoryId);
+        public Products? GetById(int ProductId);
+        public List<Products> SearchProducts(string SearchTerm);
+        public void Update(Products Product);
+        public bool ProductExists(int ProductId);
     }
 }
