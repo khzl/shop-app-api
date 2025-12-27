@@ -18,3 +18,5 @@
 /ShopApp.Models/obj
 /ShopApp.API/appsettings.json
 /ShopApp.API/appsettings.Development.json
+/ShopApp.API/ShopApp.API.csproj
+/ShopApp.DataAccess/ShopApp.DataAccess.csproj
